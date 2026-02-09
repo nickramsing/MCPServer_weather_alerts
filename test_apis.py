@@ -1,19 +1,5 @@
-import apis.nasa.nasa_api_requests as nasa
 import apis.weather_gov.weather_api_requests as weather
 import json
-
-
-##NASA links
-def test_get_APOD_success():
-    result = nasa.get_nasa_apod(date="2025-12-01")
-    assert result["result"] == True
-
-
-def test_get_APOD_fail():
-    ##bad date parameter
-    result = nasa.get_nasa_apod(date="2025-13-114")
-    print(result)
-    assert result["result"] == False
 
 ##WEATHER links
 def test_get_WEATHER_alert_active_success():

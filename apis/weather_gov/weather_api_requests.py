@@ -1,6 +1,10 @@
 from typing import Optional, Any, List
 from apis.api_requests import get_api_request
 import json
+from log_writer.logger import get_logger
+
+#instantiate module level logger
+logger = get_logger(__name__)
 
 def get_weather_alerts_active(status: Optional[str] = None):
     """
@@ -89,6 +93,7 @@ def get_weather_alerts_state(area: str | None = None) -> dict[str, Any]:
         outcome = format_result(result_outcome=False,
                                 result_status=result["status_code"],
                                 result_data=[])
+        logger.info(f"Error retrieving from NWS API. Status code {result["status_code"]} ")
         return outcome
 
     else:
@@ -97,9 +102,11 @@ def get_weather_alerts_state(area: str | None = None) -> dict[str, Any]:
             outcome = format_result(result_outcome=True,
                                     result_status=result["status_code"],
                                     result_data=["No active weather alerts for this region."])
+            logger.info(f"No active weather alerts found for {area} ... ")
             return outcome
         else:
             ## If format_alerts(feature) returns None for invalid data, such as test messages
+            logger.info(f"Attempting to format alerts: generating... ")
             alerts = [
                 alert for feature in result["response"]["features"]
                 for alert in [format_alerts(feature)]
@@ -150,6 +157,7 @@ def format_alerts(feature: dict) -> dict[str, Any]:
     try:
         if props.get("event").upper() == "TEST MESSAGE":
             raise TestMessageException("This is a test message")
+            #don't log this!! too much white noise!
         else:
 
             parsedElements = {
@@ -165,8 +173,8 @@ def format_alerts(feature: dict) -> dict[str, Any]:
             }
             return parsedElements
     except TestMessageException as tme:
-        #print(f"Test Message Exception:  {tme}")
+        logger.exception(f"Test Message Exception:  {tme}")
         pass
     except Exception as e:
-        print(f"Exception occurred:  {e}")
+        logger.error(f"EXCEPTION OCCURRED: formatting alerts: {e}")
 

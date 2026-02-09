@@ -1,16 +1,15 @@
-import apis.nasa.nasa_api_requests as nasa
 import apis.weather_gov.weather_api_requests as weather
 import json
 from typing import List
 
-def try_nasaAPIs():
-    result = nasa.get_nasa_apod(date="2025-12-01")
-    if result["result"] == True:
-    #readResult = json.loads(result)
-        print(json.dumps(result["response"], indent=4))
-    else:
-        print("ERROR OCCURRED =====")
-        print(json.dumps(result["response"], indent=4))
+
+
+
+
+
+
+
+
 
 
 def try_weatheralerts_byState(state: List[str]):
@@ -36,5 +35,5 @@ def try_weatheralerts_byState(state: List[str]):
 if __name__ == "__main__":
     #try_nasaAPIs()
     print("Welcome to the Nasa Weather API")
-    try_weatheralerts_byState(state=["MD", "DC"])
+    try_weatheralerts_byState(state=["MD"])
 
