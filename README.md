@@ -22,4 +22,10 @@ Leverage the US National Weather Service Open Data APIs as a data source to buil
 4. Extend with additional FastMCP parameters: resources, prompts
 
 # Learning Outcomes
-- To update with learnings
+- Great debugging tools exist, but they require NODE.js to be installed
+  - Install node.js and separately confirmed MCP Inspector
+- Challenges configuring Claude Desktop to perform tests
+  - Debugged with Claude Desktop Developer logs 
+  - Resolved with editing claude_desktop to ensure all references were absolute refs
+- Additional items to learn:
+  - connect with Claude Code in the IDE

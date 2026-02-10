@@ -3,15 +3,6 @@ import json
 from typing import List
 
 
-
-
-
-
-
-
-
-
-
 def try_weatheralerts_byState(state: List[str]):
     #stateList = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE",
     #"FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME",
