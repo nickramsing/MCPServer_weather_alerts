@@ -42,7 +42,7 @@ def get_weather_alerts_active(status: Optional[str] = None):
     return result
 
 
-#def get_weather_alerts_state(area: Optional[str] = None): #-> dict[str, Any] | None:
+
 def get_weather_alerts_state(area: str | None = None) -> dict[str, Any]:
     """
     Purpose:
