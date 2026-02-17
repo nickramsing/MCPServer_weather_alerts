@@ -34,11 +34,15 @@ Leverage the US National Weather Service Open Data APIs as a data source to buil
 ### Recommendations
 1. Opportunities exist to extend existing API architecture to non-technical in business enterprises. MCP servers have the potential of reducing access barriers to data insights due to segregation of employee roles/duties/skills. Rather than requesting an engineering team to build new UIs and features around APIs, non-technical enterprise users can utilize AI clients to directly access existing data services - perhaps in new ways. 
 1. When implementing MCP servers, technical personnel need to:
-   1. Ensure proper configuration
+   1. Ensure proper configuration of the MCP server
       1. Great debugging tools exist: one needs to remember to install node.js and separately confirmed MCP Inspector
       1. Practically, some initial challenges were encountered configuring Claude Desktop to perform tests
          1. Was able to debug with Claude Desktop Developer logs and MCP Inspector (confirmed operations) 
          1. Resolved by editing claude_desktop_config.json to ensure all references were absolute references
+   2. Consider security: access and authorization
+      3. Opening access to APIs that may have been permissioned by other APIs or applications creates security holes, especially when the previously secure APIs might now be accessible via a LLM client.
+   4. Consider procurement and configuration of MCP clients, particularly those on company personnel devices (desktop, laptops, mobile devices, etc.)
+      5. Procurment, access rights, configuration - these all play into security access and authorization as well
 1.  Spend effort on crafting tool descriptions, creating supporting resources, and designing effective prompts to ensure successful User Experiences. These represent the key value drivers and the determinants of performance and effectiveness.
 1. Log, monitor, and evaluate the MCP server requests and the responses provided to the user to ensure the AI is providing accurate information aligned with the underlying API data services as well as the tool, resource, and prompt scripts. 
    1. The AI’s responses should not exaggerate the underlying API data but rather provide a human-oriented interpretation of the data in the API response. 
